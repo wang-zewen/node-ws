@@ -1,722 +1,496 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Network - Protect Earth</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>泛基因组分析揭示豆科植物进化和育种的洞察</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #2e7d32;
-            --secondary: #4caf50;
-            --accent: #8bc34a;
-            --light: #e8f5e9;
-            --dark: #1b5e20;
-            --text: #333333;
-            --white: #ffffff;
-        }
-
         body {
-            background-color: var(--light);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
+            font-family: 'Times New Roman', '宋体', serif;
+            max-width: 1000px;
             margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.8;
+            color: #333;
+            background-color: #fafafa;
         }
 
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .paper-container {
+            background: white;
+            padding: 50px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .logo i {
-            font-size: 2rem;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 2rem;
-        }
-
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            align-items: center;
+        .header {
             text-align: center;
-            color: var(--white);
+            border-bottom: 3px solid #2c5aa0;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
         }
 
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1a4480;
+            margin-bottom: 20px;
+            line-height: 1.4;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        .journal-info {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+        .authors {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 20px;
+            font-style: italic;
         }
 
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        section {
-            padding: 5rem 0;
+        .section {
+            margin-bottom: 35px;
         }
 
         .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-bottom: 20px;
+            border-left: 4px solid #2c5aa0;
+            padding-left: 15px;
         }
 
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
+        .abstract {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-left: 5px solid #28a745;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
+        .keywords {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-left: 5px solid #ffc107;
+            margin-bottom: 30px;
+            border-radius: 8px;
         }
 
-        .section-title p {
-            color: var(--text);
-            max-width: 700px;
-            margin: 0 auto;
+        p {
+            text-align: justify;
+            margin-bottom: 18px;
+            text-indent: 2em;
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
+        .no-indent {
+            text-indent: 0;
         }
 
-        .about-img {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        .highlight {
+            background-color: #fff3cd;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-weight: 500;
         }
 
-        .about-img img {
+        .emphasis {
+            font-weight: bold;
+            color: #d63384;
+        }
+
+        .figure-description {
+            background-color: #e8f4fd;
+            padding: 20px;
+            border-left: 5px solid #0066cc;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .figure-title {
+            font-weight: bold;
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+
+        .references {
+            font-size: 13px;
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+
+        .ref-item {
+            margin-bottom: 12px;
+            text-indent: -2em;
+            padding-left: 2em;
+            line-height: 1.5;
+        }
+
+        .methodology {
+            background-color: #e7f3ff;
+            padding: 25px;
+            border-left: 5px solid #0066cc;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .results {
+            background-color: #f0f8f0;
+            padding: 25px;
+            border-left: 5px solid #28a745;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .discussion {
+            background-color: #fff5f5;
+            padding: 25px;
+            border-left: 5px solid #dc3545;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        ul, ol {
+            margin-bottom: 18px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .data-availability {
+            background-color: #e8f4fd;
+            padding: 25px;
+            border: 1px solid #b3d7ff;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        .acknowledgments {
+            background-color: #f0f8f0;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        .note {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+            font-style: italic;
+        }
+
+        h4 {
+            color: #495057;
+            font-size: 16px;
+            margin: 20px 0 10px 0;
+            font-weight: bold;
+        }
+
+        .table {
             width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
+            border-collapse: collapse;
+            margin: 20px 0;
         }
 
-        .about-img:hover img {
-            transform: scale(1.05);
+        .table th,
+        .table td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
         }
 
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem 1rem;
-            background-color: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .stat-item i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-item p {
-            color: var(--text);
-        }
-
-        .initiatives {
-            background-color: var(--white);
-        }
-
-        .initiatives-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .initiative-card {
-            background-color: var(--light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .initiative-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .initiative-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .initiative-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .initiative-card:hover .initiative-img img {
-            transform: scale(1.1);
-        }
-
-        .initiative-content {
-            padding: 1.5rem;
-        }
-
-        .initiative-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .initiative-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .cta {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            text-align: center;
-            padding: 5rem 0;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta .btn {
-            background-color: var(--white);
-            color: var(--primary);
-        }
-
-        .cta .btn:hover {
-            background-color: var(--accent);
-            color: var(--white);
-        }
-
-        footer {
-            background-color: var(--dark);
-            color: var(--white);
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent);
-        }
-
-        .footer-column p {
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links li a {
-            color: var(--light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links li a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 992px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .table th {
+            background-color: #e9ecef;
+            font-weight: bold;
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .paper-container {
+                padding: 30px 20px;
             }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary);
-                flex-direction: column;
-                padding: 1rem 0;
-                text-align: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            }
-            
-            nav ul.active {
-                display: flex;
-            }
-            
-            nav ul li {
-                margin: 0;
-                padding: 0.8rem 0;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
-            }
-        }
 
-        /* Animation for stats counter */
-        .counter {
-            transition: all 0.5s ease;
+            .title {
+                font-size: 22px;
+            }
+
+            .section-title {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-seedling"></i>
-                <span>Green Network</span>
+    <div class="paper-container">
+        <div class="header">
+            <div class="title">泛基因组分析揭示豆科植物进化和育种的洞察</div>
+            <div class="journal-info">Nature Genetics (2025)</div>
+            <div class="authors">王龙飞，蒋心雨，焦武 等</div>
+            <div class="journal-info">DOI: 10.1038/s41588-025-02280-5</div>
+            <div class="journal-info">收稿日期：2024年7月27日 | 接受日期：2025年6月27日 | 发表日期：2025年7月30日</div>
+        </div>
+
+        <div class="note">
+            <strong>译者注：</strong>本文为《Nature Genetics》期刊发表的最新研究论文的完整中文翻译版本。原文通过九种豆科植物的泛基因组分析，为理解豆科植物进化和育种提供了重要科学依据。
+        </div>
+
+        <div class="section">
+            <div class="abstract">
+                <div class="section-title">摘要</div>
+                <p class="no-indent">谷物豆类为推进可持续农业发展具有巨大潜力。尽管豆科植物物种的进化历史已被研究，但驱动适应性进化和控制农艺改良的保守机制仍然难以捉摸。在此，我们展示了九种广泛消费的豆类作物的高质量基因组组装，包括<span class="highlight">普通菜豆、鹰嘴豆、豌豆、小扁豆、蚕豆、鸽豆、豇豆、绿豆和扁豆</span>。泛基因组分析揭示了冷季豆类和暖季豆类中不同基因集的扩张，突出了基因出生和复制在结瘤自我调节中的作用。值得注意的是，<span class="emphasis">数百个基因在豆科植物进化过程中经历趋同选择</span>，影响种子重量等农艺性状。此外，我们证明了转座元件在基因贫乏区域的串联扩增在驱动冷季豆类基因组扩大和调控元件形成中起着关键作用。我们的结果为理解豆科植物多样化的分子机制提供了洞察，并代表了促进豆类育种的宝贵资源。</p>
             </div>
-            <nav>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">引言</div>
+            <p>豆科植物（Fabaceae或Leguminosae），通常被称为豆类，是物种数量第三大的被子植物科。作为为人类消费提供必需蛋白质并为土壤肥力贡献大气氮固定的重要资源，豆类作物对可持续农业和全球粮食安全是不可或缺的。谷物豆类可以根据它们在不同季节生长的能力主要分为冷季和暖季两组。</p>
+
+            <p>冷季豆类，包括鹰嘴豆（Cicer arietinum）、豌豆（Pisum sativum）、小扁豆（Lens culinaris）、蚕豆（Vicia faba）和白羽扇豆（Lupinus albus），在晚春或初夏完成它们的生长周期。相比之下，暖季豆类，如大豆（Glycine max）、普通菜豆（Phaseolus vulgaris）、鸽豆（Cajanus cajan）、豇豆（Vigna unguiculata）、绿豆（Vigna radiata）和扁豆（Lablab purpureus），通常在晚春至初秋的较温暖月份表现出最适生长。</p>
+
+            <p>豆类经历了约6500万年前（Ma）的共同全基因组复制（WGD）事件。在一些豆类谱系中继续发生更近期的多倍化。例如，在Glycine物种中约1300万年前发生了独特的WGD。此外，转座元件（TE）扩张在塑造豆类基因组组织中发挥重要作用，导致基因组大小从0.4到13 Gb的巨大范围。</p>
+
+            <p>谷物豆类在世界几个地区与谷物平行驯化，然后传播到不同的生态地理区域。尽管它们独立进化，谷物豆类作物已被人类驱动的选择统一塑造，以减少种子休眠和增加种子大小。</p>
+        </div>
+
+        <div class="section">
+            <div class="results">
+                <div class="section-title">结果</div>
+
+                <h4>谷物豆类的从头基因组组装</h4>
+                <p class="no-indent">为了研究豆类物种的遗传多样性和适应性进化，我们对九种在全球消费中重要的谷物豆类进行了从头基因组组装，包括普通菜豆（Sucaidou 19-17）、鹰嘴豆（XJ01）、豌豆（Suwandou 08）、小扁豆（SX01）、蚕豆（P17-186）、鸽豆（SM01）、豇豆（Sujiangdou 01）、绿豆（Sulvdou 07）和扁豆（Bianhong 01）。</p>
+
+                <p>虽然所有物种的基因组序列都已经被报告过，但几个物种的基因组，包括普通菜豆、鸽豆和鹰嘴豆，最初是通过短读长测序组装的，需要进一步精化。简而言之，我们产生了总计732.7 Gb的PacBio HiFi读长，估计覆盖深度为20-50×。利用染色体构象捕获测序数据（~80-140×），我们获得了所有物种的染色体水平组装，基因组大小范围从463.3 Mb到13.0 Gb。</p>
+
+                <h4>豆类物种的泛基因组分析</h4>
+                <p class="no-indent">通过泛基因组分析，我们使用本研究的基因组以及栽培大豆、野生大豆（Glycine soja）和白羽扇豆将所有基因分类为35,389个基因家族。如预期的那样，基因家族数量随着额外基因组的添加而增加，而核心基因集显示相反的趋势。</p>
+
+                <p>基因家族根据其分布频率被分类为以下四个不同的类别：</p>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#initiatives">Initiatives</a></li>
-                    <li><a href="#get-involved">Get Involved</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><strong>核心基因集：</strong>在所有12个基因组中存在的12,436个基因家族</li>
+                    <li><strong>软核心基因集：</strong>在10或11个豆类中发现的1,794个基因家族</li>
+                    <li><strong>外壳基因集：</strong>在两到九个组装中存在的14,223个基因家族</li>
+                    <li><strong>云基因集：</strong>物种特异性的6,936个基因家族</li>
                 </ul>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Protect Our Planet, Preserve Our Future</h1>
-            <p>Join the global movement to create a sustainable world through conservation, education, and community action.</p>
-            <a href="#get-involved" class="btn">Join Our Network</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Green Network</h2>
-                <p>We are a global community dedicated to environmental protection and sustainable development.</p>
-            </div>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team planting trees">
-                </div>
-                <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>Green Network is committed to creating a sustainable future by protecting natural ecosystems, promoting renewable energy, and empowering communities to take environmental action.</p>
-                    <p>Founded in 2010, we've grown from a small grassroots organization to an international network with over 50,000 members across 120 countries.</p>
-                    <p>Our approach combines scientific research, community engagement, and policy advocacy to address the most pressing environmental challenges of our time.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
-            </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <i class="fas fa-tree"></i>
-                    <h3 class="counter" data-target="2500000">0</h3>
-                    <p>Trees Planted</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-users"></i>
-                    <h3 class="counter" data-target="50000">0</h3>
-                    <p>Active Members</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3 class="counter" data-target="120">0</h3>
-                    <p>Countries Reached</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-recycle"></i>
-                    <h3 class="counter" data-target="1500">0</h3>
-                    <p>Cleanup Projects</p>
-                </div>
+                <p>核心基因家族占总基因的41-70%。与核心基因相比，可变基因（软核心、外壳和云基因）功能保守性较差，在外群中发现的直系同源基因较少，Ka/Ks值较高，注释蛋白结构域的百分比较低。</p>
             </div>
         </div>
-    </section>
 
-    <!-- Initiatives Section -->
-    <section class="initiatives" id="initiatives">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Initiatives</h2>
-                <p>Discover the key programs and projects we're implementing to protect our planet.</p>
-            </div>
-            <div class="initiatives-grid">
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://dialogue.earth/content/uploads/2021/04/lessons-from-the-rush-to-reforest-china-dialogue-2400x1599.jpg" alt="Reforestation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Global Reforestation</h3>
-                        <p>Planting millions of trees worldwide to restore ecosystems, combat climate change, and protect biodiversity.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Ocean Conservation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Ocean Conservation</h3>
-                        <p>Protecting marine ecosystems, reducing plastic pollution, and promoting sustainable fishing practices.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Renewable Energy">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Renewable Energy</h3>
-                        <p>Promoting solar, wind, and other clean energy sources to reduce dependence on fossil fuels.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
+        <div class="section">
+            <div class="section-title">结瘤相关基因的进化</div>
+            <p>根瘤共生（RNS）在植物及其共生体之间零星分布在四个植物目中，包括Fabales、Rosales、Fagales和Cucurbitales，形成固氮支系（NFC）。RNS的起源和进化是复杂的，通常通过以下两个假设来解释：（1）单次获得后大量丢失和（2）在不同物种中平行出现。</p>
+
+            <p>我们基于已发表的RNA-seq数据在大豆中识别了1,305个结瘤偏好基因。这些基因中约54%是核心基因，富集于嘌呤相关生物合成、转运、细胞稳态、细胞分裂素响应和转录因子活性。剩余的可变基因富集于与细胞对刺激的响应、信号传导和金属离子结合相关的过程。</p>
+
+            <div class="methodology">
+                <h4>从头基因诞生的作用</h4>
+                <p class="no-indent">从头基因诞生已在许多物种中被观察到，但其在固氮共生进化中的作用仍然难以捉摸。通过豆类和11个外群之间的比较分析，我们识别了358个在所有豆类中存在但在外群中缺失的基因。在进一步排除与外群高度相似的基因后，保留了26个基因进行进一步分析。</p>
+
+                <p>在这些基因中，8个、14个和4个基因可能分别在NFC、Fabales和豆类进化过程中从头出现。有趣的是，其中五个基因在结瘤中高表达，其中一个是大豆中的GmRIC2，编码根瘤菌诱导的CLAVATA3/ESR相关肽。</p>
             </div>
         </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="cta" id="get-involved">
-        <div class="container">
-            <h2>Join Our Global Movement</h2>
-            <p>Together, we can create a sustainable future for generations to come. Every action counts, no matter how small.</p>
-            <a href="#" class="btn">Become a Member</a>
-        </div>
-    </section>
+        <div class="section">
+            <div class="section-title">豆类进化过程中的基因扩张和丢失</div>
+            <p>冷季和暖季谷物豆类估计在约5500万年前分化。我们使用CAFE5软件识别了在冷季和暖季豆类支系中分别显著扩张的40和37个基因家族（P < 0.05）。令人惊讶的是，只有一个基因家族在冷季和暖季豆类中都扩张。</p>
 
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Green Network</h3>
-                    <p>We are dedicated to protecting our planet through collaborative action, education, and sustainable solutions.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#initiatives">Initiatives</a></li>
-                        <li><a href="#get-involved">Get Involved</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Our Programs</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Reforestation</a></li>
-                        <li><a href="#">Ocean Cleanup</a></li>
-                        <li><a href="#">Wildlife Protection</a></li>
-                        <li><a href="#">Climate Education</a></li>
-                        <li><a href="#">Sustainable Agriculture</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Copper Creek Drive, New York</p>
-                    <p><i class="fas fa-phone"></i> +1 (312) 171-0771</p>
-                    <p><i class="fas fa-envelope"></i> support@greennetwork.org</p>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Green Network. All rights reserved.</p>
+            <p>GO分析显示，在冷季豆类中独特扩张的基因富集于碳固定、光合作用、氧化还原过程、ATP代谢和类囊体膜。相比之下，在暖季豆类中特异扩张的基因与防御响应、蛋白激酶活性以及对应激、刺激和激素的响应过程相关。</p>
+
+            <div class="results">
+                <h4>多倍体进化特征</h4>
+                <p class="no-indent">多倍体进化通常始于WGD，随后是基因组重组和二倍化中的基因丢失。在古多倍体物种中，基因可以分为WGD基因、小规模重复（SSD）基因和单拷贝基因。在Glycine物种中识别了约31,900-33,700个WGD基因，而在其他暖季豆类物种中仅检测到2,800-3,500个WGD衍生基因。</p>
+
+                <p>可变基因占豆类-WGD和Glycine-WGD基因集的不到30%。然而，Glycine谱系中约70%的单拷贝基因是可变基因。这些结果表明可变基因在二倍化过程中更容易失去其两个拷贝之一。</p>
             </div>
         </div>
-    </footer>
 
-    <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
-        });
+        <div class="section">
+            <div class="section-title">豆类进化中的趋同选择</div>
+            <p>保守基因的平行选择有助于在不同物种中获得相似的表型。然而，与性状相关的基因是否以及在多大程度上在豆类物种中经历了平行选择仍不清楚。为了解决这些问题，我们利用了大豆、鸽豆、鹰嘴豆和豌豆的野生材料和地方品种/栽培种的广泛重测序数据集。</p>
 
-        // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            const speed = 200; // The lower the slower
-            
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                
-                const inc = target / speed;
-                
-                if(count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
-                }
-            });
-        }
+            <p>在大豆中识别了含有7,278个基因的395个基因组区域，在鸽豆中识别了含有9,224个基因的595个区域，在鹰嘴豆中识别了含有9,970个基因的470个区域，在豌豆中识别了含有14,799个基因的5,407个区域，这些区域显示遗传多样性显著降低。</p>
 
-        // Initialize counters when page loads
-        window.addEventListener('load', animateCounters);
+            <div class="results">
+                <h4>YUC4基因的趋同选择</h4>
+                <p class="no-indent">在大豆选择基因中，226个基因在鸽豆、鹰嘴豆和豌豆中显示遗传多样性降低。这些基因涉及多个途径，包括种子休眠、种子增大和能量平衡。GmYUC4a（GmW82.14G124100），大豆YUCCA基因家族的成员，在鸽豆（CcYUC4）、鹰嘴豆（CaYUC4）和豌豆（PsYUC4）中经历了类似的遗传多样性降低。</p>
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    document.querySelector('nav ul').classList.remove('active');
-                }
-            });
-        });
-    </script>
+                <p>在拟南芥中，YUC1和YUC4，GmYUC4a的直系同源基因，通过增强生长素积累正调节种子大小。基于SoyOmics中发表的数据，我们使用3' UTR中的插入缺失和下游区域的单核苷酸多态性（SNP）为GmYUC4a识别了三个单倍型（Hap1-3）。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">促进基因组扩张的TE局部增殖</div>
+            <p>TE扩增作为驱动基因组进化的关键因素出现。在暖季豆类中检测到适度的TE扩增，主要位于染色体的中心区域。相比之下，冷季豆类表现出显著的TE扩张。值得注意的是，在常染色质区域观察到显著的TE增殖，TE含量从48%到90%不等，而异染色质区域的总体TE比例保持恒定（~90%）。</p>
+
+            <p>长末端重复（LTR）逆转录转座子的扩增，特别是Gypsy超家族，在常染色质和异染色质区域都比其他TE类型更明显。值得注意的是，TE在蚕豆中均匀分布在整个染色体上。</p>
+
+            <div class="methodology">
+                <h4>串联扩增模型</h4>
+                <p class="no-indent">为了阐明基因组扩张期间TE扩增的模式，我们在鹰嘴豆及其最近亲缘种豌豆之间识别了3,830个共线性区域，在鹰嘴豆中平均长度为9.6 kb，在豌豆中为62.6 kb。类似地，我们在小扁豆及其最近亲缘种蚕豆之间识别了3,185个共线性区域，在小扁豆中平均长度为39.7 kb，在蚕豆中为155.8 kb。</p>
+
+                <p>在这些区域中，家族01（F01）TE在冷季豆类中表现出最高的拷贝数。F01 TE与Ty3-gypsy Ogre元件表现出最大的序列相似性，这些元件构成豌豆和蚕豆基因组中最丰富的TE类别。从鹰嘴豆到豌豆的初始基因组扩张由F01元件的从头插入驱动，而从小扁豆到蚕豆的后续基因组扩大可能源于预存在F01 TE的扩增。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">调控元件的进化</div>
+            <p>TE具有进化为调控元件的潜力。ATAC-seq分析在鹰嘴豆、豌豆、小扁豆和蚕豆中分别揭示了22,507、63,137、56,696和98,458个开放染色质区域（OCR）。我们进一步将OCR分类为cTE-OCR（与TE完全重叠）、pTE-OCR（与TE部分重叠）和nTE-OCR（与TE无重叠）。</p>
+
+            <p>cTE-OCR的百分比从鹰嘴豆的0.8%到蚕豆的10%不等。与pTE-OCR和nTE-OCR相比，cTE-OCR在远端区域富集。值得注意的是，cTE-OCR在豌豆、小扁豆和蚕豆中显示相当高的DNA甲基化水平，但在鹰嘴豆中不是这样。</p>
+
+            <div class="discussion">
+                <h4>高甲基化OCR的特征</h4>
+                <p class="no-indent">植物中的调控元件通常被认为是低甲基化的。与这一概念相反，在具有大基因组的豆类中，相当部分的OCR被重甲基化。然而，玉米和小麦中大多数OCR位于未甲基化区域（UMR），它们的TE含量（超过80%）与豌豆、小扁豆和蚕豆相似。因此，高甲基化OCR不能简单地用豆类中的TE扩增来解释。</p>
+
+                <p>约28-45%的CG-OCR位于远端基因组区域，这些区域明显富集于DNA转座子，特别是Mutator元件。与随机基因组区域相比，远端CG-OCR显示显著提高的转录活性和染色质可及性。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="discussion">
+                <div class="section-title">讨论</div>
+                <p>作物进化伴随着种子破碎性的丧失、种子休眠的减少以及籽粒大小和产量的增加。迄今为止，已经鉴定了几个在物种间表现出平行选择的基因，包括与种子休眠相关的G基因和影响籽粒数的KRN2。然而，在豆类物种中很少有关于平行选择基因的全基因组扫描的文献记录。</p>
+
+                <p>总共226个基因在大豆、鸽豆、鹰嘴豆和豌豆中显示类似的遗传变异减少。从野生种到地方品种遗传变异减少的基因可能与作物驯化、对不同环境的适应或遗传漂变有关。对这些基因的全面理解不仅有可能加速豆类物种的改进，还为未来粮食安全新作物的从头驯化提供见解。</p>
+
+                <h4>TE扩增机制</h4>
+                <p class="no-indent">TE的大量扩增是豆类物种基因组扩张的关键驱动因素。LTR逆转录转座子构成豌豆和蚕豆基因组的主要成分，Ty3-gypsy Ogre元件代表其主要谱系。然而，Ty3-gypsy Ogre元件在基因组区域内优先扩张同时避开富基因区域的机制仍然不清楚。</p>
+
+                <p>我们提出了TE增殖的"串联扩增"机制，表明TE可能通过识别近端基序整合到基因组中，这可能将TE插入聚集成簇。值得注意的是，这种模式也在小麦中观察到，并在果蝇中得到记录，暗示其在植物和动物中的保守性。</p>
+
+                <h4>研究局限性与未来方向</h4>
+                <p class="no-indent">本研究局限于相对较窄的豆类物种集合，主要是那些代表全球农业重要性的主要谷物豆类。将范围扩大到包括来自更远相关属的物种，以及同一物种内更大的材料多样性，可能显著增强我们对豆类进化动态的理解。</p>
+
+                <p>未来研究的一个有前途的途径在于比较基因组学与群体水平基因组和转录组学研究的整合，这可能精化对农艺性状基础关键遗传变异的识别。总的来说，我们的研究不仅推进了对豆类进化的理解，还为豆类育种和改良提供了基因组资源。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="methodology">
+                <div class="section-title">材料与方法</div>
+
+                <h4>植物材料和测序</h4>
+                <p class="no-indent">选择九种豆类物种进行基因组组装和注释，包括普通菜豆（Sucaidou 19-17）、鹰嘴豆（XJ01）、豌豆（Suwandou 08）、小扁豆（SX01）、蚕豆（P17-186）、鸽豆（SM01）、豇豆（Sujiangdou 01）、绿豆（Sulvdou 07）和扁豆（Bianhong 01）。豆类种子在恒温25°C、12小时光照/12小时黑暗的生长室中种植。从每个材料的幼叶中分离高分子量DNA。</p>
+
+                <p>使用SMRTbell Express Template Prep Kit 2.0为每个材料制备中位大小约15 kb的PacBio HiFi测序文库。此外，使用Ultra-Long DNA Sequencing Kit为鹰嘴豆产生中位大小约50 kb的ONT超长测序文库。PacBio HiFi和ONT超长文库分别在PacBio Sequel IIe平台和PromethION测序仪上进行测序。</p>
+
+                <h4>基因组组装</h4>
+                <p class="no-indent">基因组组装按照先前描述的方法进行。简而言之，使用SMRT Link v10.1中的ccs（v6.0.0）以参数'--min-passes 3'产生HiFi读长。使用hifiasm（v0.16.1）以默认参数进行基因组组装。对于鹰嘴豆，使用RagTag（v2.1.0）中的'scaffold'模块基于nanopore contigs连接PacBio HiFi contigs。</p>
+
+                <p>使用purge_dups（v1.2.5）去除contigs中残留杂合位点的额外拷贝。通过与Hi-C数据整合使用Juicer（v1.6）和3D-DNA（v190716）获得染色体水平的scaffold。最后，基于Hi-C接触图使用Juicebox手动精化组装，将模糊片段作为单独的scaffold处理。</p>
+
+                <h4>基因组注释</h4>
+                <p class="no-indent">对于TE注释，首先使用LTRharvest（v1.6.2）和LTR_FINDER_parallel（v1.1）分别从头注释两个LTR文库。然后使用LTR_retriever（v2.9.0）整合这些注释以生成非冗余LTR文库。同时，使用RepeatModeler（v2.0.1）从头构建独立的重复文库，使用DeepTE重新分类未知类型的TE。</p>
+
+                <p>通过整合转录本证据、同源搜索和从头预测的方法预测基因。对于基于转录组的预测，使用HISAT2（v2.1.0）将来自各种组织的RNA-seq数据比对到基因组组装，并使用StringTie（v2.1.4）重建转录本。同时，使用Trinity（v2.14.0）进行从头转录本组装。</p>
+
+                <h4>基因家族进化</h4>
+                <p class="no-indent">为了构建豆类泛基因组，使用OrthoFinder（v2.5.4）以默认参数在12个豆类（包括九个新组装和三个已发表基因组）中识别分层直系同源群。使用WGDI（v0.6.2）中的YN00程序计算核心、软核心和外壳基因内的非同义（Ka）和同义替换（Ks）值。</p>
+
+                <p>使用iqtree（v2.2.0.3）以参数'-B 1000 --bnni'从单拷贝基因的多序列比对推断物种树。使用拟南芥作为外群根。使用PAML（v4.10.6）中的MCMCTree与来自TIMETREE5的化石标定估计物种分歧时间并构建超度量系统发育树。使用CAFE5（v5.0.0；P < 0.05）识别现存物种与其假定祖先之间基因家族的扩张和收缩。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="data-availability">
+                <div class="section-title">数据可获得性</div>
+                <p class="no-indent">本研究产生的原始测序数据可在国家基因组数据中心（NGDC；https://ngdc.cncb.ac.cn/gsa/）数据库中获取，登录号为PRJCA024173。七个基因组组装和注释文件可在NGDC的基因组仓库（GWH）数据库（https://ngdc.cncb.ac.cn/gwh/）中获取，具体登录号包括：</p>
+                <ul>
+                    <li>GWHEUBL00000000.1（鹰嘴豆）</li>
+                    <li>GWHEUBM00000000.1（豇豆）</li>
+                    <li>GWHEUBQ00000000.1（扁豆）</li>
+                    <li>GWHEUBR00000000.1（小扁豆）</li>
+                    <li>GWHEUBS00000000.1（绿豆）</li>
+                    <li>GWHEUBT00000000.1（豌豆）</li>
+                    <li>GWHEUBU00000000.1（鸽豆）</li>
+                </ul>
+                <p class="no-indent">普通菜豆（https://figshare.com/s/0fcd95bb0973ca370681）和蚕豆（https://figshare.com/s/aa54699538c1438e515b）的基因组组装和注释文件可在figshare数据库中获取。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="acknowledgments">
+                <div class="section-title">致谢</div>
+                <p class="no-indent">我们感谢南京农业大学生物信息学中心提供数据分析支持，感谢江苏省农业科学院陈华研究员提供实验材料。本研究得到生物育种-国家科技重大专项（2023ZD04073）、国家自然科学基金（32372126和32300494）、中国博士后科学基金会创新人才计划（BX2021132）和中国博士后科学基金（2022M721657）的资助。</p>
+
+                <h4>作者贡献</h4>
+                <p class="no-indent">Q.S.构思和设计了研究。L.W.、J.M.和W.Y.进行了实验。L.W.、X.J.、W.J.和Y.C.分析了数据。Q.C.提供了材料和试剂。L.W.和Q.S.撰写了论文。所有作者阅读并批准了最终论文。</p>
+
+                <h4>利益冲突声明</h4>
+                <p class="no-indent">作者声明没有竞争利益。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="references">
+                <div class="section-title">主要参考文献</div>
+                <div class="ref-item">1. Foyer, C. H. et al. 忽视豆类损害了人类健康和可持续粮食生产。Nat. Plants 2, 16112 (2016).</div>
+                <div class="ref-item">2. Lavin, M., Herendeen, P. S. & Wojciechowski, M. F. 豆科植物的进化速率分析表明第三纪期间谱系的快速多样化。Syst. Biol. 54, 575–594 (2005).</div>
+                <div class="ref-item">3. Schmutz, J. et al. 古多倍体大豆的基因组序列。Nature 463, 178–183 (2010).</div>
+                <div class="ref-item">4. Abbo, S. et al. 重新考虑古代近东豆类与谷物的驯化。Q. Rev. Biol. 84, 29–50 (2009).</div>
+                <div class="ref-item">5. Alam, O. & Purugganan, M. D. 驯化和作物进化：可变综合征、复杂遗传结构和生态纠缠。Plant Cell 36, 1227–1241 (2024).</div>
+                <div class="ref-item">6. Schmutz, J. et al. 普通菜豆参考基因组和双重驯化的全基因组分析。Nat. Genet. 46, 707–713 (2014).</div>
+                <div class="ref-item">7. Yang, T. et al. 改进的豌豆参考基因组和泛基因组突出基因组特征和进化特征。Nat. Genet. 54, 1553–1563 (2022).</div>
+                <div class="ref-item">8. Jayakodi, M. et al. 巨大的二倍体蚕豆基因组解锁全球蛋白质作物的变异。Nature 615, 652–659 (2023).</div>
+                <div class="ref-item">9. Wang, L. et al. 大豆基因组的端粒到端粒无间隙组装。Mol. Plant 16, 1711–1714 (2023).</div>
+                <div class="ref-item">10. Van Velzen, R., Doyle, J. J. & Geurts, R. 一个复活的情景：固氮结瘤的单次获得和大量丢失。Trends Plant Sci. 24, 49–57 (2019).</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="figure-description">
+                <div class="figure-title">图1 | 豆类物种的泛基因组分析</div>
+                <p class="no-indent">a. 豆类的地理分布。粗体字表示本研究中组装的物种。b. 使用拟南芥、桃和胡桃作为外群的豆类最大似然系统发育树。c. 随着豆类基因组增加的泛基因和核心基因家族数量。d. 核心、软核心、外壳和云基因家族的比例。e. 核心、软核心、外壳和云基因在外群中具有同源基因的百分比。f-h. 核心、软核心、外壳和云基因周围的TE分布、CG甲基化分布和表达水平。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="figure-description">
+                <div class="figure-title">图2 | 豆类结瘤相关基因的进化</div>
+                <p class="no-indent">a. 结瘤偏好基因中核心、软核心、外壳和云基因的比例。b. 具有基因等级的豆类系统发育树。c. 不同基因等级中结瘤偏好基因的比例。d. 豆类中从头基因识别的流程。e. RIC基因的系统发育分析。f. NIN基因的系统发育树。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="figure-description">
+                <div class="figure-title">图3 | 豆类进化过程中的基因扩张和丢失</div>
+                <p class="no-indent">a. 显示冷季和暖季豆类扩张家族重叠的维恩图。b-c. 冷季（b）或暖季（c）豆类扩张家族基因的显著富集GO术语。d. 不同豆类物种间NLR拷贝数的比较。e-f. 大豆（e）和普通菜豆（f）中WGD、SSD和单拷贝基因中核心、软核心、外壳和云基因的百分比。g. 鹰嘴豆、豌豆、小扁豆和蚕豆中WGD、SSD和单拷贝基因的数量。h. 豌豆相对于鹰嘴豆和蚕豆相对于小扁豆中来源于WGD基因的新生成SSD基因百分比。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="figure-description">
+                <div class="figure-title">图4 | 豆类进化中的趋同选择</div>
+                <p class="no-indent">a. 大豆、鸽豆、鹰嘴豆和豌豆中野生种和地方品种之间的全基因组π比值。b. 大豆中受人工选择的基因数量。c. 在大豆、鸽豆、鹰嘴豆和豌豆中经历趋同选择的基因的共线性。d. 大豆GmYUC4a及其在鸽豆、鹰嘴豆和豌豆中直系同源基因600 kb侧翼基因组区域的野生种和地方品种之间的π比值。e. 大豆GmYUC4a的单倍型分析。f. 具有Hap1、Hap2和Hap3材料的百粒重。g. 中国栽培种SN14和两个独立染色体片段置换系（R3和R170）的代表性种子。h. SN14、R3和R170的百粒重。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="figure-description">
+                <div class="figure-title">图5 | 豆类进化过程中TE的扩张</div>
+                <p class="no-indent">a. 常染色质区域中TE的比例。b. TE在整个染色体中的分布。c. 豌豆和鹰嘴豆Gypsy元件中F01 TE的百分比。d. 鹰嘴豆和豌豆中有或无F01 TE的共线性区域比例。e. 小扁豆和蚕豆Gypsy元件中F01 TE的百分比。f. 小扁豆和蚕豆中有或无F01 TE的共线性区域比例。g. 四种冷季豆类保守基因周围的TE分布。h. 豆类进化过程中TE扩张的两个假设。i. 豌豆和蚕豆中相邻F01 TE之间距离的分布。j. 相同或不同区域中F01 TE的序列同一性。k. 具有不同F01 TE数量的簇的百分比。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="figure-description">
+                <div class="figure-title">图6 | 调控元件的进化</div>
+                <p class="no-indent">a. cTE-OCR、pTE-OCR和nTE-OCR的百分比。b. 蚕豆中cTE-OCR、pTE-OCR和nTE-OCR在基因、启动子、下游和远端基因间区域的百分比。c. 鹰嘴豆和蚕豆中cTE-OCR、pTE-OCR和nTE-OCR的DNA甲基化水平。d. TE内OCR（开放）和剩余部分（关闭）的CG甲基化水平。e-f. 鹰嘴豆（e）和蚕豆（f）中有或无DNA甲基化的OCR的代表性IGV快照。g. 蚕豆中与远端CG-OCR重叠的TE中DNA转座子的百分比。h. 蚕豆中CG-OCR和UMR-OCR有转录本的百分比。i. 蚕豆中CG-OCR和UMR-OCR的染色质可及性。j. 鹰嘴豆、豌豆、小扁豆和蚕豆中参与染色质可及性调节的基因表达水平变化。</p>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>译者总结：</strong>这项开创性研究通过构建九种重要豆类作物的高质量泛基因组，系统阐明了豆科植物的进化机制和育种潜力。研究发现了冷季与暖季豆类的基因组分化模式，揭示了转座元件驱动基因组扩张的"串联扩增"机制，并识别了数百个经历趋同选择的重要农艺基因。这些发现不仅深化了我们对植物进化的理解，更为豆类作物的遗传改良和可持续农业发展提供了宝贵的基因组资源和理论指导。
+        </div>
+    </div>
 </body>
-
 </html>
